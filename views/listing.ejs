@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= listing.name %></title>
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+      </head>
+</head>
+
+
+<body class="container">
+    <form action = "/">
+        <input type="submit" value="Home">
+    </form>
+    <div class="border p-5 bg-light col-6">
+        <h3><%= listing.name %></h3>
+        <h4> $<%- listing.price_by_night %> Per Night </h4>
+        <h6> Number of Rooms: <%- listing.number_rooms %></h6>
+        <%if(city == "" && state == "")
+        {%>
+        <h6> Location: <%-listing.cityName%>, <%-listing.stateName%></h6>
+        <%}else{ %>
+            <h6> Location: <%-city%>, <%-state%></h6>
+        <%} %>
+        <strong>Description: </strong> <br> <p><%- listing.description %></p>
+        <%if(amenities.length > 0)
+        {%>
+            <strong>Amenities:</strong> <br>
+            <%for(let i = 0; i < amenities.length; i++)
+            {%>
+                <%if(i+1 != amenities.length)
+                {%>
+                   <%- amenities[i].name %>, 
+                <%}else{%>
+                    <%- amenities[i].name %> 
+                <%}%>
+            <%}%>  
+        <%}%>
+    </div>
+</body>
+</html>
